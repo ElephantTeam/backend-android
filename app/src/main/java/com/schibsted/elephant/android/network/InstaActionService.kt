@@ -3,7 +3,7 @@ package com.schibsted.elephant.android.network
 import com.schibsted.elephant.android.network.model.Profile
 import com.schibsted.elephant.android.network.model.RegisterUserRequestBody
 import okhttp3.ResponseBody
-import com.schibsted.elephant.android.model.LeaderbordItem
+import com.schibsted.elephant.android.network.model.LeaderbordItem
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

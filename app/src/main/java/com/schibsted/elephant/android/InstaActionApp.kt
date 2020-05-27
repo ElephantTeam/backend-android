@@ -21,6 +21,5 @@ class InstaActionApp : Application() {
 
     private val appModule = module {
         single { LocalPreferences(get()) }
-        viewModel { LeaderboardViewModel() }
     }
 }
