@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem
 import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem.LeaderbordViewUser
 import com.schibsted.elephant.android.network.InstaActionService
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -17,8 +18,15 @@ internal class LeaderboardViewModel(
         MutableStateFlow(LeaderbordViewState.Loading)
     val state: StateFlow<LeaderbordViewState> = _state
 
+    private lateinit var job: Job
+
     init {
-        viewModelScope.launch {
+        fetchData()
+    }
+
+    private fun fetchData() {
+        job = viewModelScope.launch {
+            _state.value = LeaderbordViewState.Loading
             val response = instaActionService
                 .getLeaderbord()
             if (response.isSuccessful) {
@@ -34,17 +42,24 @@ internal class LeaderboardViewModel(
                         }
                         .sortedByDescending { it.score }
                 )
-
             } else {
-                _state.value = LeaderbordViewState.Error
+                _state.value =
+                    LeaderbordViewState.Error(
+                        "Something went wrong :( \n" + (response.errorBody() ?: "")
+                    )
             }
         }
+    }
+
+    fun retry() {
+        job.cancel()
+        fetchData()
     }
 }
 
 
 internal sealed class LeaderbordViewState {
     object Loading : LeaderbordViewState()
-    object Error : LeaderbordViewState()
+    data class Error(val message: String) : LeaderbordViewState()
     data class Data(val items: List<LeaderbordViewItem>) : LeaderbordViewState()
 }
