@@ -1,6 +1,9 @@
 package com.schibsted.elephant.backend.controller
 
+import com.google.gson.Gson
 import com.schibsted.elephant.backend.persistance.LeaderboardScoreRepository
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -9,18 +12,26 @@ class LeaderboardController(
         private val leaderboardScoreRepository: LeaderboardScoreRepository
 ) {
 
+    private val log: Logger = LoggerFactory.getLogger(LeaderboardController::class.java)
+    private val gson = Gson()
+
     @RequestMapping("/leaderboard")
     fun scores(): String {
 
-        leaderboardScoreRepository.findAll().map {
-            mapOf(
-                    "name" to it.user.name,
-                    "uuid" to it.user.uuid,
-                    "score" to it.score
-            )
-        }
+        val results = leaderboardScoreRepository
+                .findAll()
+                .sortedBy { it.score }
+                .map {
+                    mapOf(
+                            "name" to it.user.name,
+                            "uuid" to it.user.uuid,
+                            "score" to it.score
+                    )
+                }
 
-        return mockJSON
+        log.info("Board: $results")
+
+        return gson.toJson(results)
     }
 }
 

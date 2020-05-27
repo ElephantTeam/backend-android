@@ -14,7 +14,21 @@ import javax.persistence.ManyToOne
 @Entity
 @IdClass(LeaderboardScorePK::class)
 data class LeaderboardScore(
+
         @Id @ManyToOne val user: User,
-        @Id val board: String = "default",
-        val score: Int
-) : Serializable
+        @Id val board: String = DEFAULT_BOARD,
+        val score: Int = 0
+
+) : Serializable {
+
+    companion object {
+        const val DEFAULT_BOARD = "default"
+    }
+}
+
+
+class LeaderboardScorePK : Serializable {
+
+    var user: String? = null
+    var board: String? = null
+}

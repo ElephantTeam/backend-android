@@ -29,18 +29,22 @@ class UserController(
                 token != null && token.isNotBlank()) {
             val user = User(name, uuid, token)
 
-            if (!userRepository.findById(uuid).isPresent) {
+            val newUser = !userRepository.existsById(uuid)
+
+            // It also updates user so it's possible to change nick and token as long as UUID stays the same
+            val savedUser = userRepository.save(user)
+
+            if (newUser) {
                 // add to leader board with 0 if user is new
+
                 leaderboardScoreRepository.save(
                         LeaderboardScore(
-                                user = user,
+                                user = savedUser,
                                 score = 0
                         )
                 )
             }
 
-            // It also updates user so it's possible to change nick and token as long as UUID stays the same
-            userRepository.save(user)
             val message = "User added: $user"
             log.info(message)
             ResponseEntity
