@@ -8,22 +8,27 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
 import com.schibsted.elephant.android.R
+import com.schibsted.elephant.android.databinding.FragmentDashboardBinding
 
 /**
  * A simple [Fragment] subclass.
  */
 class DashboardFragment : Fragment() {
 
+    private lateinit var binding: FragmentDashboardBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+        binding = FragmentDashboardBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.leaderboard).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.leaderbordFragment))
+        binding.leaderboard.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.leaderbordFragment))
+        binding.challenge.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.challengeFragment))
     }
 }
