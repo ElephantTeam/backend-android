@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.schibsted.elephant.android.LocalPreferences
 import com.schibsted.elephant.android.R
+import com.schibsted.elephant.android.databinding.FragmentDashboardBinding
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import org.koin.android.ext.android.inject
 
@@ -19,18 +20,22 @@ class DashboardFragment : Fragment() {
 
     private val preferences: LocalPreferences by inject()
 
+    private lateinit var binding: FragmentDashboardBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+        binding = FragmentDashboardBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        leaderboard.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.leaderbordFragment))
-        logout.setOnClickListener {
+        binding.leaderboard.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.leaderbordFragment))
+        binding.challenge.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.challengeFragment))
+        binding.logout.setOnClickListener {
             preferences.saveUUID("")
             findNavController().navigate(R.id.entryFragment)
         }

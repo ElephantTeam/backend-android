@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/entryFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/entryFragment">
 
     <fragment
         android:id="@+id/entryFragment"
@@ -11,21 +11,31 @@
         android:label="Entry"
         tools:layout="@layout/fragment_entry">
         <action
-                android:id="@+id/action_entryFragment_to_dashboardFragment"
-                app:destination="@id/dashboardFragment" />
+            android:id="@+id/action_entryFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
 
     <fragment
-            android:id="@+id/leaderbordFragment"
-            android:name="com.schibsted.elephant.android.ui.leaderboard.LeaderboardFragment"
-            android:label="Leaderboard"
-            tools:layout="@layout/fragment_leaderboard"/>
+        android:id="@+id/leaderbordFragment"
+        android:name="com.schibsted.elephant.android.ui.leaderboard.LeaderboardFragment"
+        android:label="Leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
 
-    <action android:id="@+id/actionToLeaderbord"
-            app:destination="@id/leaderbordFragment"/>
+    <action
+        android:id="@+id/actionToLeaderbord"
+        app:destination="@id/leaderbordFragment" />
     <fragment
-            android:id="@+id/dashboardFragment"
-            android:name="com.schibsted.elephant.android.ui.dashboard.DashboardFragment"
-            android:label="Dashboard"
-            tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/dashboardFragment"
+        android:name="com.schibsted.elephant.android.ui.dashboard.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/challengeFragment"
+        android:name="com.schibsted.elephant.android.ui.challenge.ChallengeFragment"
+        android:label="Challenge"
+        tools:layout="@layout/fragment_challenge" />
+    <action
+        android:id="@+id/actionToChallenge"
+        app:destination="@id/challengeFragment" />
 </navigation>
