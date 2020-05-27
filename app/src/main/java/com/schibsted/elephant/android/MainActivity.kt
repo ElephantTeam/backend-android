@@ -6,8 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import timber.log.Timber
+import androidx.lifecycle.lifecycleScope
+import com.schibsted.elephant.android.com.schibsted.elephant.android.network.InstaActionService
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
+
+    val service: InstaActionService by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,5 +35,12 @@ class MainActivity : AppCompatActivity() {
                 Timber.d(msg)
                 Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
             })
+
+        lifecycleScope.launch {
+            val profile = service.getProfile()
+            if(profile.isSuccessful) {
+                hello.text = profile.body()?.name
+            }
+        }
     }
 }
