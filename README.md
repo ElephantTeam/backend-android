@@ -1,2 +1,2 @@
 # backend-android
-Ha! Backend + Android client
+Backend + Android client
