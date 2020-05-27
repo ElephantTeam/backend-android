@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "447163187498",
+    "firebase_url": "https://instaaction-5ec50.firebaseio.com",
+    "project_id": "instaaction-5ec50",
+    "storage_bucket": "instaaction-5ec50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447163187498:android:c7b1c2832cdfc6c2d21e53",
+        "android_client_info": {
+          "package_name": "com.github.elephant.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447163187498-b4t5guvmjp43ronttj3b17u874eun81v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0W0mjOn7k-Zm_8LUBQaaJpHMmN5u7WHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "447163187498-b4t5guvmjp43ronttj3b17u874eun81v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "447163187498-cdpggfuc6p727v3q4tc4ss5hsp0lo3gl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "no.schibsted.instaaction"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
