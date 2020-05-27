@@ -53,7 +53,7 @@ jar {
 }
 
 bootJar {
-    archiveClassifier.set('boot')
+    //archiveClassifier.set('boot')
     mainClassName = 'com.schibsted.elephant.backend.ElephantBackendApplicationKt'
 
     manifest {
