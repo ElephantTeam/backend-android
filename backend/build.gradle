@@ -26,6 +26,8 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 
+    implementation 'com.google.code.gson:gson:2.8.5'
+
     runtimeOnly 'com.h2database:h2'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
@@ -41,5 +43,22 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
         jvmTarget = "1.8"
+    }
+}
+
+springBoot {
+    mainClassName = 'com.schibsted.elephant.backend.ElephantBackendApplicationKt'
+}
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    //archiveClassifier.set('boot')
+    mainClassName = 'com.schibsted.elephant.backend.ElephantBackendApplicationKt'
+
+    manifest {
+        attributes 'Start-Class': 'com.schibsted.elephant.backend.ElephantBackendApplicationKt'
     }
 }
