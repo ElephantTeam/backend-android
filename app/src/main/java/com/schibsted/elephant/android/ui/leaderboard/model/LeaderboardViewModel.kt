@@ -1,9 +1,9 @@
-package com.schibsted.elephant.android.leaderboard.model
+package com.schibsted.elephant.android.ui.leaderboard.model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem
-import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem.LeaderbordViewUser
+import com.schibsted.elephant.android.ui.leaderboard.view.LeaderbordViewItem
+import com.schibsted.elephant.android.ui.leaderboard.view.LeaderbordViewItem.LeaderbordViewUser
 import com.schibsted.elephant.android.network.InstaActionService
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,7 +40,6 @@ internal class LeaderboardViewModel(
                                 it.score
                             )
                         }
-                        .sortedByDescending { it.score }
                 )
             } else {
                 _state.value =

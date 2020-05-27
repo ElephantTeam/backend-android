@@ -17,7 +17,7 @@
 
     <fragment
             android:id="@+id/leaderbordFragment"
-            android:name="com.schibsted.elephant.android.leaderboard.LeaderboardFragment"
+            android:name="com.schibsted.elephant.android.ui.leaderboard.LeaderboardFragment"
             android:label="Leaderboard"
             tools:layout="@layout/fragment_leaderboard"/>
 

@@ -1,4 +1,4 @@
-package com.schibsted.elephant.android.leaderboard.view
+package com.schibsted.elephant.android.ui.leaderboard.view
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil

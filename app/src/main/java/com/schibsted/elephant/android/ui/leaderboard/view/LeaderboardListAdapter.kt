@@ -1,10 +1,10 @@
-package com.schibsted.elephant.android.leaderboard.view
+package com.schibsted.elephant.android.ui.leaderboard.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.schibsted.elephant.android.R
-import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem.*
+import com.schibsted.elephant.android.ui.leaderboard.view.LeaderbordViewItem.*
 
 internal class LeaderboardListAdapter : ListAdapter<LeaderbordViewItem, LeaderboardViewItemVH<LeaderbordViewItem>>(LeaderboardDiffCallback()) {
 

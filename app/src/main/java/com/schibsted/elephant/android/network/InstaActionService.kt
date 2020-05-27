@@ -14,7 +14,7 @@ interface InstaActionService {
     @GET("profile")
     suspend fun getProfile(): Response<Profile>
 
-    @GET("leaderbord")
+    @GET("leaderboard")
     suspend fun getLeaderbord(): Response<List<LeaderbordItem>>
 
     @POST("register")
