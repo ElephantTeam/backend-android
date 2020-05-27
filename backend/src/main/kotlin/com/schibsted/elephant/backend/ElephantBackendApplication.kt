@@ -5,7 +5,10 @@ import org.springframework.boot.runApplication
 import org.springframework.context.annotation.ComponentScan
 
 @SpringBootApplication
-@ComponentScan("com.schibsted.elephant.backend.controller")
+@ComponentScan(
+	"com.schibsted.elephant.backend.controller",
+	"com.schibsted.elephant.backend.di"
+)
 class ElephantBackendApplication
 
 fun main(args: Array<String>) {
