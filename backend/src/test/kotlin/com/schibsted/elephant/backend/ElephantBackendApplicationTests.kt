@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest
 class ElephantBackendApplicationTests {
 
 	@Test
-	void contextLoads() {
+	fun contextLoads() {
 	}
 
 }
