@@ -43,3 +43,20 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         jvmTarget = "1.8"
     }
 }
+
+springBoot {
+    mainClassName = 'com.schibsted.elephant.backend.ElephantBackendApplicationKt'
+}
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    archiveClassifier.set('boot')
+    mainClassName = 'com.schibsted.elephant.backend.ElephantBackendApplicationKt'
+
+    manifest {
+        attributes 'Start-Class': 'com.schibsted.elephant.backend.ElephantBackendApplicationKt'
+    }
+}
