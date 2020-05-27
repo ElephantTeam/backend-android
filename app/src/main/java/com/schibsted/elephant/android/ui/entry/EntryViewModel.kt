@@ -28,7 +28,8 @@ class EntryViewModel(
     private val _snackbarChannel = BroadcastChannel<String>(Channel.BUFFERED)
     val snackbarMessageFlow: Flow<String> = _snackbarChannel.asFlow()
 
-    private val _state = MutableStateFlow<EntryFragmentViewState>(EntryFragmentViewState.Iddle)
+    private val _state =
+        MutableStateFlow(if (preferences.getUUID().isEmpty()) EntryFragmentViewState.Iddle else EntryFragmentViewState.Success)
     val viewState: StateFlow<EntryFragmentViewState> = _state
 
     fun registerUser(username: String) {

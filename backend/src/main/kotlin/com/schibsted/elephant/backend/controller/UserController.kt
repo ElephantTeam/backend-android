@@ -8,8 +8,10 @@ import com.schibsted.elephant.backend.persistance.UserRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -53,6 +55,20 @@ class UserController(
             ResponseEntity
                     .badRequest()
                     .body("Incorrect data input")
+        }
+    }
+
+    @DeleteMapping("/userByUuid")
+    fun deleteUser(@RequestParam uuid: String): ResponseEntity<Any> {
+        return try {
+            userRepository.deleteById(uuid)
+            val message = "User removed: $uuid"
+            ResponseEntity
+                .ok("{ \"message\": \"$message!\" }")
+        } catch (e: Exception) {
+            ResponseEntity
+                .badRequest()
+                .body("User of this uuid do not exists")
         }
     }
 }

@@ -20,12 +20,13 @@
         app:layout_constraintRight_toLeftOf="@id/challengeCard"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/leaderboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Learderboard" />
+
+            <Button
+                    android:id="@+id/leaderboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Learderboard" />
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -51,5 +52,29 @@
             android:text="Challenge" />
 
     </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+            android:id="@+id/logoutCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@color/white"
+            android:elevation="16dp"
+            app:cardCornerRadius="16dp"
+            app:contentPadding="32dp"
+
+            app:layout_constraintLeft_toLeftOf="@id/leaderboardCard"
+            app:layout_constraintLeft_toRightOf="@id/leaderboardCard"
+            app:layout_constraintTop_toBottomOf="@id/leaderboardCard">
+
+        <Button
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Logout" />
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
