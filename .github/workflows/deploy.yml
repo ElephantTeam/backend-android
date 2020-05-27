@@ -15,7 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Build
+        run: ./gradlew :backend:build
+      - name: Prepare BootJar
+        run: ./gradlew bootJar
       - name: Deploy
-        run: ./gradlew :backend:build :backend:deployHeroku
+        run: ./gradlew deployHeroku
         env:
           HEROKU_API_KEY: "${{ secrets.HEROKU_API_KEY }}"
