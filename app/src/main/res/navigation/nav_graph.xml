@@ -6,12 +6,6 @@
             app:startDestination="@id/entryFragment">
 
     <fragment
-            android:id="@+id/blankFragment"
-            android:name="com.schibsted.elephant.android.BlankFragment"
-            android:label="Blank!!"
-            tools:layout="@layout/fragment_blank" />
-
-    <fragment
         android:id="@+id/entryFragment"
         android:name="com.schibsted.elephant.android.ui.entry.EntryFragment"
         android:label="Entry"
