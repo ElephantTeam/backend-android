@@ -1,6 +1,6 @@
 package com.schibsted.elephant.android.com.schibsted.elephant.android.di
 
-import com.schibsted.elephant.android.com.schibsted.elephant.android.network.InstaActionService
+import com.schibsted.elephant.android.network.InstaActionService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
