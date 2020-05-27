@@ -5,26 +5,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import com.schibsted.elephant.android.R
 import com.schibsted.elephant.android.leaderboard.model.LeaderboardViewModel
 import com.schibsted.elephant.android.leaderboard.view.LeaderboardListAdapter
+import com.schibsted.elephant.android.leaderboard.view.LeaderboardViewItemVH
+import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem
 import kotlinx.android.synthetic.main.fragment_leaderboard.*
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LeaderboardFragment : Fragment() {
 
-    val viewModel: LeaderboardViewModel by viewModel()
+    private val viewModel: LeaderboardViewModel by viewModel()
+    private lateinit var adapter: ListAdapter<LeaderbordViewItem, LeaderboardViewItemVH<LeaderbordViewItem>>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(R.layout.fragment_leaderboard, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = LeaderboardListAdapter()
         recycler.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = LeaderboardListAdapter()
+            adapter = this@LeaderboardFragment.adapter
         }
+
+        viewModel
+                .leaderboardData()
+                .onEach {
+                    adapter.submitList(it)
+                }
+                .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
 }
