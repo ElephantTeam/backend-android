@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import com.schibsted.elephant.android.R
 import com.schibsted.elephant.android.leaderboard.model.LeaderboardViewModel
+import com.schibsted.elephant.android.leaderboard.model.LeaderbordViewState
 import com.schibsted.elephant.android.leaderboard.view.LeaderboardListAdapter
 import com.schibsted.elephant.android.leaderboard.view.LeaderboardViewItemVH
 import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem
@@ -23,8 +24,12 @@ class LeaderboardFragment : Fragment() {
     private val viewModel: LeaderboardViewModel by viewModel()
     private lateinit var adapter: ListAdapter<LeaderbordViewItem, LeaderboardViewItemVH<LeaderbordViewItem>>
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-            inflater.inflate(R.layout.fragment_leaderboard, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View =
+        inflater.inflate(R.layout.fragment_leaderboard, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,11 +40,38 @@ class LeaderboardFragment : Fragment() {
         }
 
         viewModel
-                .leaderboardData()
-                .onEach {
-                    adapter.submitList(it)
+            .state
+            .onEach {
+                when (it) {
+                    LeaderbordViewState.Loading -> {
+                        refresh.isRefreshing = false
+                        recycler.visibility = View.GONE
+                        errorContainer.visibility = View.GONE
+                        progress.visibility = View.VISIBLE
+                    }
+                    is LeaderbordViewState.Error -> {
+                        refresh.isRefreshing = false
+                        recycler.visibility = View.GONE
+                        errorContainer.visibility = View.VISIBLE
+                        errorText.text = it.message
+                        errorButton.setOnClickListener {
+                            viewModel.retry()
+                        }
+                        progress.visibility = View.GONE
+                    }
+                    is LeaderbordViewState.Data -> {
+                        refresh.isRefreshing = false
+                        progress.visibility = View.GONE
+                        recycler.visibility = View.VISIBLE
+                        adapter.submitList(it.items)
+                    }
                 }
-                .launchIn(viewLifecycleOwner.lifecycleScope)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        refresh.setOnRefreshListener {
+            viewModel.retry()
+        }
     }
 
 }

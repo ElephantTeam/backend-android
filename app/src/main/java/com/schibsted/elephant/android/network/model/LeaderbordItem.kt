@@ -1,4 +1,4 @@
-package com.schibsted.elephant.android.model
+package com.schibsted.elephant.android.network.model
 
 import com.squareup.moshi.JsonClass
 
