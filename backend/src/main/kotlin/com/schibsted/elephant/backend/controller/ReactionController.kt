@@ -18,7 +18,9 @@ class ReactionController {
     fun reaction(@RequestBody registerRequest: ReactionRequest): ResponseEntity<Any> {
         val (challengeId, uuid) = registerRequest
 
-        return if (challengeId != null && challengeId.isNotBlank() && uuid != null && uuid.isNullOrBlank()) {
+        log.info(registerRequest.toString())
+
+        return if (challengeId != null && challengeId.isNotBlank() && uuid != null && uuid.isNotBlank()) {
             // todo add time handling of the response
             ResponseEntity.ok("{ \"message\": \"Reaction registered\" }")
         } else {
