@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.schibsted.elephant.android.LocalPreferences
 import com.schibsted.elephant.android.R
 import com.schibsted.elephant.android.databinding.FragmentDashboardBinding
-import kotlinx.android.synthetic.main.fragment_dashboard.*
+import com.schibsted.elephant.android.network.InstaActionService
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 /**
@@ -19,6 +21,7 @@ import org.koin.android.ext.android.inject
 class DashboardFragment : Fragment() {
 
     private val preferences: LocalPreferences by inject()
+    private val service: InstaActionService by inject()
 
     private lateinit var binding: FragmentDashboardBinding
 
@@ -36,8 +39,13 @@ class DashboardFragment : Fragment() {
         binding.leaderboard.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.leaderbordFragment))
         binding.challenge.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.challengeFragment))
         binding.logout.setOnClickListener {
-            preferences.saveUUID("")
-            findNavController().navigate(R.id.entryFragment)
+            viewLifecycleOwner
+                .lifecycleScope
+                .launch {
+                    service.deleteUserByUuid(preferences.getUUID())
+                    preferences.saveUUID("")
+                    findNavController().navigate(R.id.entryFragment)
+                }
         }
     }
 }
