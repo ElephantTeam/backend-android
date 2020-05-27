@@ -1,4 +1,4 @@
-package com.schibsted.elephant.android.leaderboard
+package com.schibsted.elephant.android.ui.leaderboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import com.schibsted.elephant.android.R
-import com.schibsted.elephant.android.leaderboard.model.LeaderboardViewModel
-import com.schibsted.elephant.android.leaderboard.model.LeaderbordViewState
-import com.schibsted.elephant.android.leaderboard.view.LeaderboardListAdapter
-import com.schibsted.elephant.android.leaderboard.view.LeaderboardViewItemVH
-import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem
+import com.schibsted.elephant.android.ui.leaderboard.model.LeaderboardViewModel
+import com.schibsted.elephant.android.ui.leaderboard.model.LeaderbordViewState
+import com.schibsted.elephant.android.ui.leaderboard.view.LeaderboardListAdapter
+import com.schibsted.elephant.android.ui.leaderboard.view.LeaderboardViewItemVH
+import com.schibsted.elephant.android.ui.leaderboard.view.LeaderbordViewItem
 import kotlinx.android.synthetic.main.fragment_leaderboard.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
