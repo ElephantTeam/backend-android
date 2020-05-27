@@ -1,4 +1,4 @@
-package com.schibsted.elephant.android.com.schibsted.elephant.android.di
+package com.schibsted.elephant.android.di
 
 import com.schibsted.elephant.android.network.InstaActionService
 import okhttp3.OkHttpClient
@@ -21,7 +21,7 @@ val NetworkModule = module {
         Retrofit.Builder()
             .client(get())
             .addConverterFactory(MoshiConverterFactory.create())
-            .baseUrl("https://my-json-server.typicode.com/ElephantTeam/backend-android/")
+            .baseUrl("https://desolate-spire-68065.herokuapp.com/")
             .build()
     }
 

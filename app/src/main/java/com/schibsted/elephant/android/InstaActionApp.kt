@@ -1,7 +1,7 @@
 package com.schibsted.elephant.android
 
 import android.app.Application
-import com.schibsted.elephant.android.com.schibsted.elephant.android.di.NetworkModule
+import com.schibsted.elephant.android.di.NetworkModule
 import com.schibsted.elephant.android.di.ViewModelModule
 import com.schibsted.elephant.android.leaderboard.model.LeaderboardViewModel
 import org.koin.android.ext.koin.androidContext
