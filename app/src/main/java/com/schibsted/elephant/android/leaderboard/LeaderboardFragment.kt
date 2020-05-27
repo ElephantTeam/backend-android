@@ -44,18 +44,34 @@ class LeaderboardFragment : Fragment() {
             .onEach {
                 when (it) {
                     LeaderbordViewState.Loading -> {
-
+                        refresh.isRefreshing = false
+                        recycler.visibility = View.GONE
+                        errorContainer.visibility = View.GONE
+                        progress.visibility = View.VISIBLE
                     }
-                    LeaderbordViewState.Error -> {
-
+                    is LeaderbordViewState.Error -> {
+                        refresh.isRefreshing = false
+                        recycler.visibility = View.GONE
+                        errorContainer.visibility = View.VISIBLE
+                        errorText.text = it.message
+                        errorButton.setOnClickListener {
+                            viewModel.retry()
+                        }
+                        progress.visibility = View.GONE
                     }
                     is LeaderbordViewState.Data -> {
+                        refresh.isRefreshing = false
+                        progress.visibility = View.GONE
                         recycler.visibility = View.VISIBLE
                         adapter.submitList(it.items)
                     }
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        refresh.setOnRefreshListener {
+            viewModel.retry()
+        }
     }
 
 }
