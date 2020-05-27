@@ -1,4 +1,4 @@
-package com.schibsted.elephant.android.com.schibsted.elephant.android
+package com.schibsted.elephant.android
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
