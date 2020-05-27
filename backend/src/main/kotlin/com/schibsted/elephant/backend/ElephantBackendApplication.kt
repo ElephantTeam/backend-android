@@ -11,7 +11,10 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 
 @SpringBootApplication
-@ComponentScan("com.schibsted.elephant.backend.controller")
+@ComponentScan(
+    "com.schibsted.elephant.backend.controller",
+    "com.schibsted.elephant.backend.service"
+)
 class ElephantBackendApplication
 
 private val log: Logger = LoggerFactory.getLogger(ElephantBackendApplication::class.java)
