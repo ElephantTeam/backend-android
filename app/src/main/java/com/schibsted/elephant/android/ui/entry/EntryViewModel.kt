@@ -1,10 +1,8 @@
 package com.schibsted.elephant.android.ui.entry
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.InstanceIdResult
 import com.schibsted.elephant.android.LocalPreferences
@@ -12,14 +10,11 @@ import com.schibsted.elephant.android.network.InstaActionService
 import com.schibsted.elephant.android.network.model.RegisterUserRequestBody
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
-import timber.log.Timber
 import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -33,7 +28,8 @@ class EntryViewModel(
     private val _snackbarChannel = BroadcastChannel<String>(Channel.BUFFERED)
     val snackbarMessageFlow: Flow<String> = _snackbarChannel.asFlow()
 
-    private val _state = MutableStateFlow<EntryFragmentViewState>(EntryFragmentViewState.Iddle)
+    private val _state =
+        MutableStateFlow(if (preferences.getUUID().isEmpty()) EntryFragmentViewState.Iddle else EntryFragmentViewState.Success)
     val viewState: StateFlow<EntryFragmentViewState> = _state
 
     fun registerUser(username: String) {
