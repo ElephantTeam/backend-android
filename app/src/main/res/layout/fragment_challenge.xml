@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/successIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_win"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <TextView
+        android:id="@+id/successText"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Success!"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@id/reactionTime"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/successIcon"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:viewBindingIgnore="true" />
+
+    <TextView
+        android:id="@+id/reactionTime"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your reaction time is: 12 seconds!"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@id/buttonFinish"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/successText"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonFinish"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:text="Finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/buttonLeaderboard"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/reactionTime"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonLeaderboard"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="Show leaderboard"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toRightOf="@id/buttonFinish"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reactionTime" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/successGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="successIcon, buttonFinish, buttonLeaderboard, reactionTime, successText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,8 @@
-package com.schibsted.elephant.android.leaderboard.view
+package com.schibsted.elephant.android.ui.leaderboard.view
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.schibsted.elephant.android.leaderboard.view.LeaderbordViewItem.*
+import com.schibsted.elephant.android.ui.leaderboard.view.LeaderbordViewItem.*
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_leaderboard.view.*
 

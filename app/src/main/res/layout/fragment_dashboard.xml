@@ -1,30 +1,54 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
-        tools:context="com.schibsted.elephant.android.ui.dashboard.DashboardFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.schibsted.elephant.android.ui.dashboard.DashboardFragment">
 
     <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="24dp"
-            android:background="@color/white"
-            android:elevation="16dp"
-            app:cardCornerRadius="16dp"
-            app:contentPadding="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/leaderboardCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="@color/white"
+        android:elevation="16dp"
+        app:cardCornerRadius="16dp"
+        app:contentPadding="32dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/challengeCard"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
-                android:id="@+id/leaderboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Learderboard" />
+            android:id="@+id/leaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Learderboard" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/challengeCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="@color/white"
+        android:elevation="16dp"
+        app:cardCornerRadius="16dp"
+        app:contentPadding="32dp"
+
+        app:layout_constraintLeft_toRightOf="@id/leaderboardCard"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/challenge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Challenge" />
 
     </com.google.android.material.card.MaterialCardView>
 
