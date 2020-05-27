@@ -1,4 +1,4 @@
-package com.schibsted.elephant.android.com.schibsted.elephant.android.network
+package com.schibsted.elephant.android.network
 
 import com.schibsted.elephant.android.com.schibsted.elephant.android.model.Profile
 import com.schibsted.elephant.android.model.LeaderbordItem
@@ -11,6 +11,6 @@ interface InstaActionService {
     suspend fun getProfile(): Response<Profile>
 
     @GET("leaderbord")
-    suspend fun getLeaderbord(): Response<LeaderbordItem>
+    suspend fun getLeaderbord(): Response<List<LeaderbordItem>>
 
 }
