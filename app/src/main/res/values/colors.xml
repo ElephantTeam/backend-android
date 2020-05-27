@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ceaae4</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#efd754</color>
+
+    <color name="white">#E5F4F2</color>
+
+    <color name="firstPlace">#F2A404</color>
+    <color name="secondPlace">#32C2FF</color>
+    <color name="thirdPlace">#44D7B7</color>
+    <color name="otherPlaces">#FFFFFF</color>
+
+    <color name="otherPlacesTextColor">#2B4141</color>
+
+
+</resources>
