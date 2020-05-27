@@ -68,7 +68,7 @@ class UserController(
         } catch (e: Exception) {
             ResponseEntity
                 .badRequest()
-                .body("User of this uuid do not exists")
+                .body("User of this uuid do not exists $e")
         }
     }
 }
