@@ -6,16 +6,14 @@
             app:startDestination="@id/entryFragment">
 
     <fragment
-            android:id="@+id/blankFragment"
-            android:name="com.schibsted.elephant.android.BlankFragment"
-            android:label="Blank!!"
-            tools:layout="@layout/fragment_blank" />
-
-    <fragment
         android:id="@+id/entryFragment"
         android:name="com.schibsted.elephant.android.ui.entry.EntryFragment"
         android:label="Entry"
-        tools:layout="@layout/fragment_entry"/>
+        tools:layout="@layout/fragment_entry">
+        <action
+                android:id="@+id/action_entryFragment_to_dashboardFragment"
+                app:destination="@id/dashboardFragment" />
+    </fragment>
 
     <fragment
             android:id="@+id/leaderbordFragment"
@@ -25,4 +23,9 @@
 
     <action android:id="@+id/actionToLeaderbord"
             app:destination="@id/leaderbordFragment"/>
+    <fragment
+            android:id="@+id/dashboardFragment"
+            android:name="com.schibsted.elephant.android.ui.dashboard.DashboardFragment"
+            android:label="Dashboard"
+            tools:layout="@layout/fragment_dashboard" />
 </navigation>

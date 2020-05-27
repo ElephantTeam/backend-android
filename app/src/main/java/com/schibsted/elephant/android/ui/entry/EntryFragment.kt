@@ -8,7 +8,10 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavGraphNavigator
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.schibsted.elephant.android.R
 import com.schibsted.elephant.android.databinding.FragmentEntryBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
@@ -65,7 +68,7 @@ class EntryFragment: Fragment() {
                 binding.filledTextField.isInvisible = true
             }
             EntryFragmentViewState.Success -> {
-                //todo launch next fragment!
+                findNavController().navigate(R.id.dashboardFragment)
             }
         }
     }
