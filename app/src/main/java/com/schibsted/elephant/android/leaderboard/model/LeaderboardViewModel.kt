@@ -40,7 +40,6 @@ internal class LeaderboardViewModel(
                                 it.score
                             )
                         }
-                        .sortedByDescending { it.score }
                 )
             } else {
                 _state.value =

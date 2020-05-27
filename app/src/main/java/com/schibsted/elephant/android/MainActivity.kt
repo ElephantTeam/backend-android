@@ -1,6 +1,7 @@
 package com.schibsted.elephant.android
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -24,19 +25,25 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Timber.w("getInstanceId failed ${task.exception}")
-                    return@OnCompleteListener
-                }
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Timber.w("getInstanceId failed ${task.exception}")
+                        return@OnCompleteListener
+                    }
 
-                // Get new Instance ID token
-                val token = task.result?.token
+                    // Get new Instance ID token
+                    val token = task.result?.token
 
-                // Log and toast
-                val msg = "New token $token"
-                Timber.d(msg)
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-            })
+                    // Log and toast
+                    val msg = "New token $token"
+                    Timber.d(msg)
+                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                })
+    }
+
+    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
+        return if (menuItem.itemId == android.R.id.home) {
+            findNavController(R.id.nav_host_fragment).navigateUp()
+        } else super.onOptionsItemSelected(menuItem)
     }
 }
