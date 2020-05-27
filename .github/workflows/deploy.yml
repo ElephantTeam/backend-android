@@ -16,6 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy
-        run: ./gradlew :backend:build :backend:deployHeroku
+        run: ./gradlew :backend:build :backend:bootJar && ./gradlew :backend:deployHeroku
         env:
           HEROKU_API_KEY: "${{ secrets.HEROKU_API_KEY }}"
