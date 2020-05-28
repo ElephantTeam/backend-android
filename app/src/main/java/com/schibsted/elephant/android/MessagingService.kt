@@ -17,7 +17,7 @@ class MessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Timber.d("Message received: $remoteMessage")
 
-        val challengeId = remoteMessage.data["challenge_id"] ?: return //return if no challenge id found
+        val challengeId = remoteMessage.data["challengeId"] ?: return //return if no challenge id found
 
         val args = ChallengeFragmentArgs(challengeId).toBundle()
 
