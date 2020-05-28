@@ -9,20 +9,19 @@ import com.google.firebase.messaging.MulticastMessage
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
-import java.io.FileInputStream
 
 
 class Sender @Autowired constructor() {
 
     private val log: Logger = LoggerFactory.getLogger(Sender::class.java)
 
-    private val serviceAccount = FileInputStream("path/to/serviceAccountKey.json");
+    private val serviceAccount = Sender::class.java.getResourceAsStream("/instaaction-5ec50-firebase-adminsdk-tjyzz-12295110ae.json");
 
     private val options = FirebaseOptions.Builder()
             .setCredentials(GoogleCredentials.fromStream(serviceAccount))
             .build();
 
-    private val firebaseApp: FirebaseApp = FirebaseApp.initializeApp("Elephant")
+    private val firebaseApp: FirebaseApp = FirebaseApp.initializeApp(options)
     private val firebaseMessaging = FirebaseMessaging.getInstance(firebaseApp)
 
     fun send(challengeId: String, tokens: List<String>) {
