@@ -12,8 +12,9 @@ import org.springframework.context.annotation.ComponentScan
 
 @SpringBootApplication
 @ComponentScan(
-    "com.schibsted.elephant.backend.controller",
-    "com.schibsted.elephant.backend.service"
+        "com.schibsted.elephant.backend.controller",
+        "com.schibsted.elephant.backend.service",
+        "com.schibsted.elephant.backend.notification"
 )
 class ElephantBackendApplication
 
@@ -26,21 +27,21 @@ fun main(args: Array<String>) {
 
 @Bean
 fun demo(userRepository: UserRepository): CommandLineRunner {
-	return CommandLineRunner {
+    return CommandLineRunner {
 
 
-		userRepository.save(User("Iwo", "111", "aaa"))
+        userRepository.save(User("Iwo", "111", "aaa"))
 
-		// fetch all customers
-		// fetch all customers
-		log.info("Customers found with findAll():")
-		log.info("-------------------------------")
-		for (customer in userRepository.findAll()) {
-			log.info(customer.toString())
-			println(customer)
-		}
-		log.info("")
-	}
+        // fetch all customers
+        // fetch all customers
+        log.info("Customers found with findAll():")
+        log.info("-------------------------------")
+        for (customer in userRepository.findAll()) {
+            log.info(customer.toString())
+            println(customer)
+        }
+        log.info("")
+    }
 }
 
 const val elephant = " _______  __       _______ .______    __    __       ___      .__   __. .___________.\n" +
