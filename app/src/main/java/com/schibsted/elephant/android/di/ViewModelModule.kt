@@ -8,6 +8,6 @@ import org.koin.dsl.module
 
 val ViewModelModule = module {
     viewModel { EntryViewModel(get(), get()) }
-    viewModel { ChallengeViewModel(get()) }
+    viewModel { ChallengeViewModel(get(), get()) }
     viewModel { LeaderboardViewModel(get()) }
 }
