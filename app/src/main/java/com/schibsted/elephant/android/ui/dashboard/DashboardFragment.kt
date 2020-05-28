@@ -37,7 +37,6 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.leaderboard.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.leaderbordFragment))
-        binding.challenge.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.challengeFragment))
         binding.logout.setOnClickListener {
             viewLifecycleOwner
                 .lifecycleScope
