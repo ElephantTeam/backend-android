@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.schibsted.elephant.android.databinding.FragmentChallengeBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -16,6 +17,7 @@ class ChallengeFragment : Fragment() {
 
     lateinit var binding: FragmentChallengeBinding
 
+    private val  args: ChallengeFragmentArgs by navArgs()
     private val challengeViewModel: ChallengeViewModel by viewModel()
 
     override fun onCreateView(
@@ -33,6 +35,8 @@ class ChallengeFragment : Fragment() {
         challengeViewModel.viewState
             .onEach { render(it) }
             .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        challengeViewModel.requestChallenge(args.challengeId)
     }
 
     private fun render(state: ChallengeFragmentViewState) {

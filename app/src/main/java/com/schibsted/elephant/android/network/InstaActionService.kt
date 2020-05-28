@@ -4,6 +4,7 @@ import com.schibsted.elephant.android.network.model.Profile
 import com.schibsted.elephant.android.network.model.RegisterUserRequestBody
 import okhttp3.ResponseBody
 import com.schibsted.elephant.android.network.model.LeaderbordItem
+import com.schibsted.elephant.android.network.model.ReactionRequestBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -21,6 +22,9 @@ interface InstaActionService {
 
     @POST("register")
     suspend fun registerUser(@Body requestBody: RegisterUserRequestBody): Response<ResponseBody>
+
+    @POST("reaction")
+    suspend fun reaction(@Body requestBody: ReactionRequestBody): Response<ResponseBody>
 
     @DELETE("userByUuid")
     suspend fun deleteUserByUuid(@Query("uuid") uuid: String) : Response<ResponseBody>
