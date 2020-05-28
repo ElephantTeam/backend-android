@@ -42,8 +42,8 @@ class MessagingService : FirebaseMessagingService() {
 
 
         val notification = NotificationCompat.Builder(applicationContext, "default")
-            .setContentTitle(remoteMessage.notification?.title)
-            .setContentText(remoteMessage.notification?.body)
+            .setContentTitle("New challenge!")
+            .setContentText("Quick! Click me!")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
